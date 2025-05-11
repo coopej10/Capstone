@@ -13,7 +13,7 @@ struct NewHabitView: View {
             Text("New habit:")
                 .font(.title2)
             
-            TextField("Enter new habit or goal", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+            TextField("Enter your new habit or goal", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                 .padding(.horizontal, 20)
                 .frame(height: 50)
                 .background(

@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showNewHabit = false
+    
     var body: some View {
         
-    VStack {
         HStack {
             Text("Add a habit")
                 .font(.system(size: 20))
                 .fontWeight(.black)
                 
             Button {
-
+                showNewHabit = true
             } label: {
                 Text("+")
                     .font(.title)
@@ -26,7 +27,12 @@ struct ContentView: View {
             Spacer()
                 }
         .padding()
-        
+    
+        if showNewHabit {
+                NewHabitView()
+                }
+    
+    VStack {
         ZStack {
             Color(.systemPink)
             
@@ -36,11 +42,12 @@ struct ContentView: View {
                 .foregroundColor(Color.white)
                 .multilineTextAlignment(.center)
         }
-        .frame(width: 300, height: 100)
+        .frame(width: 250, height: 50)
         .cornerRadius(20)
         
-        MultiDatePicker("Label", selection: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Binding<Set<DateComponents>>@*/.constant([])/*@END_MENU_TOKEN@*/)
+        MultiDatePicker(/*@START_MENU_TOKEN@*/"Label"/*@END_MENU_TOKEN@*/, selection: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Binding<Set<DateComponents>>@*/.constant([])/*@END_MENU_TOKEN@*/)
             }
+            
     .padding()
         }
     }
