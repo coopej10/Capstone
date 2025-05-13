@@ -11,6 +11,8 @@ import SwiftData
 struct ContentView: View {
     @State private var showNewHabit = false
     @Query var habits: [HabitItem]
+    @Environment(\.modelContext) var modelContext
+    
     @State private var selectedDate = Date()
     
     var body: some View {
@@ -44,7 +46,7 @@ struct ContentView: View {
                 ZStack {
                     Color(.systemPink)
                     
-                    Text("Track your goals Build your habits")
+                    Text("Every day counts! Track your habits.")
                         .font(.title)
                         .fontWeight(.medium)
                         .foregroundColor(Color.white)
@@ -69,15 +71,22 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .onDelete(perform: deleteHabit)
                 }
                 
                 NavigationLink(destination: HabitList()) {
-                    Text("List of Habits")
+                    Text("View All Habits")
                 }
 
             }
         }
             .padding()
+        }
+    func deleteHabit(at offsets: IndexSet) {
+        for offset in offsets {
+            let habit = habits[offset]
+            modelContext.delete(habit)
+            }
         }
     }
     #Preview {
