@@ -9,7 +9,8 @@ import Foundation
 import SwiftData
 
 @Model
-class HabitItem {
+class HabitItem: Identifiable {
+    var id = UUID()
     var habit: String
     var date: Date
     var isCompleted: Bool
@@ -21,3 +22,4 @@ class HabitItem {
     }
     
 }
+
